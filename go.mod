@@ -1,4 +1,4 @@
-module github.com/futzu/cuei
+module github.com/sponnoly-bitcentral/cuei
 
 go 1.19
 
