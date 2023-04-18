@@ -34,6 +34,21 @@ type Stream struct {
 
 }
 
+// initialize and return a *Stream
+func NewStream() *Stream {
+	s := &Stream{}
+	s.Pids = &Pids{}
+	s.mkMaps()
+	return s
+}
+
+func (stream *Stream) DecodeBytes(b []byte) []*Cue {
+	pkt := &b
+	stream.pktNum++
+	stream.parse(*pkt)
+	return stream.Cues
+}
+
 func (stream *Stream) mkMaps() {
 	stream.Pid2Prgm = make(map[uint16]uint16)
 	stream.Pid2Type = make(map[uint16]uint8)
